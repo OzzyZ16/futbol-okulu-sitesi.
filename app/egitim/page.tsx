@@ -23,6 +23,10 @@ const sessions = [
       { saat: "09:45 – 10:00", aktivite: "Soğuma & Değerlendirme" },
     ],
     image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=400&q=80",
+      "https://images.unsplash.com/photo-1544442843-6e68f9f2a60a?w=400&q=80",
+    ],
   },
   {
     id: "ogleden-sonra",
@@ -44,6 +48,10 @@ const sessions = [
       { saat: "16:10 – 16:30", aktivite: "Soğuma & Video Analizi" },
     ],
     image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?w=400&q=80",
+      "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&q=80",
+    ],
   },
   {
     id: "aksam",
@@ -64,6 +72,10 @@ const sessions = [
       { saat: "19:40 – 20:00", aktivite: "Rekabetçi Maç & Kapanış" },
     ],
     image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&q=80",
+      "https://images.unsplash.com/photo-1508098682722-e99c643e7f0b?w=400&q=80",
+    ],
   },
 ];
 
@@ -201,12 +213,17 @@ export default function EgitimPage() {
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="bg-gray-100 aspect-video flex items-center justify-center text-gray-400 text-xs">
-                    Fotoğraf Alanı
-                  </div>
-                  <div className="bg-gray-100 aspect-video flex items-center justify-center text-gray-400 text-xs">
-                    Fotoğraf Alanı
-                  </div>
+                  {session.images.map((src, i) => (
+                    <div key={i} className="relative aspect-video">
+                      <Image
+                        src={src}
+                        alt={`${session.title} antrenman galerisi ${i + 1}`}
+                        fill
+                        className="object-cover"
+                        sizes="160px"
+                      />
+                    </div>
+                  ))}
                 </div>
                 <Link
                   href="/kayit"
